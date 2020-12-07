@@ -3,7 +3,7 @@
 
 Este proyecto contiene propuestas para la solución de 5 de los 7 problemas propuestos en https://eugenkiss.github.io/7guis/tasks. Se utilizó React en el proyecto entero para desarrollarlo. 
 
-Es importante mencionar que es la primera vez que se utiliza React para desarollar software.
+**Es importante mencionar que es la primera vez que se utiliza React para desarollar software.**
 
 Ver el Table of Contents para conocer más acerca de cada problema con su respectiva solución.
 
