@@ -45,6 +45,7 @@ class CRUD extends React.Component{
   }
 
   loadUserList(){
+    //Cargar todos los documentos existentes y construir listado utilizado por el select dropdown
         let currentComponent = this;
         this.db.allDocs({include_docs: true, descending: true})
         .then(function(doc) {
@@ -69,6 +70,7 @@ class CRUD extends React.Component{
     }
 
   componentDidMount(){
+    //Inicializar listado de usuarios existentes en la base de datos
         let currentComponent = this;
         currentComponent.db.allDocs({include_docs: true, descending: true})
         .then(function(doc) {
@@ -91,6 +93,7 @@ class CRUD extends React.Component{
         });
     }
   componentDidUpdate(prevProps, prevState, snapshot) {
+    //Crear evento para actualizar listado de usuarios cuando haya un cambio en la base de datos
       let currentComponent = this;
       currentComponent.db.changes({
           since: 'now',
@@ -99,6 +102,7 @@ class CRUD extends React.Component{
   }
 
   create(){
+    //Crear usuario
     var full_name = this.state.name + " " + this.state.surname;
     var data = {
       value: full_name,
@@ -114,7 +118,7 @@ class CRUD extends React.Component{
   }
 
   update(){
-
+    //Actualizar usuario
     if( this.selectedOption ){
       var full_name = this.state.name + " " + this.state.surname;
       this.selectedOption.user.doc.name = this.state.name;
@@ -124,7 +128,7 @@ class CRUD extends React.Component{
       UpdateUser(this.selectedOption.user.doc);
       this.selectedOption = null;
       this.setState({ 
-        selectedOption: null,//this.selectedOption
+        selectedOption: null,
         name: "",
         surname: "",
       });
@@ -132,6 +136,7 @@ class CRUD extends React.Component{
   }
 
   delete(){
+    //Eliminar un usuario
     DeleteUser(this.selectedOption.user.doc);
     this.selectedOption = null;
     this.setState({
@@ -140,6 +145,7 @@ class CRUD extends React.Component{
       selectedOption: null
     });
   }
+
   selectChange = selectedOption => {
     
     this.selectedOption = selectedOption;
